@@ -252,7 +252,7 @@ void loop() {
     int len = canMsgRcv.can_dlc;
 
     if (id == CAN_RECV_ID) {
-      if (len == 3 && canMsgRcv.data[0] == 0x30 && canMsgRcv.data[1] == 0x00 && canMsgRcv.data[2] == 0x0A) { // Acknowledgement Write : 30 00 0A
+      if (len == 3 && canMsgRcv.data[0] == 0x30 && canMsgRcv.data[1] == 0x00 && canMsgRcv.data[2] >= 0x0A) { // Acknowledgement Write : 30 00 0A or 30 00 14
         sendAdditionalDiagFrames(receiveDiagFrameData, 12);
       } else if (len > 2 && canMsgRcv.data[0] == 0x10) { // Acknowledgement Read : 30 00 05
         receiveDiagFrameSize = canMsgRcv.data[1];
