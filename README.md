@@ -37,7 +37,7 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 | 1081 | End of communication |
 | 10C0 | Open Diagnostic session |
 | 2783 | Unlocking service for configuration (Diagnostic session must be enabled first) - SEED |
-| 21XX | Read Zone XXXX (1 byte) |
+| 21XX | Read Zone XX (1 byte) |
 
 ## Test Commands (NAC/RCC_CN/RCC)
 | Command | Description |
@@ -205,6 +205,13 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 | 00DE | Calibration_Fct_PUSH_LUM |
 | 00DD | Calibration_Fct_AEE_SEL |
 | 2145 | Telecoding_Fct_AIO |
+
+## Zones (SMEG/AIO)
+
+| Zone ID | Description |
+|--|--|
+| FE | ZI Zone (Last 6 characters: current calibration) |
+| 80 | ZA Zone |
 
 ## Diagnostic frames explanation / What the Sketch is doing
 
