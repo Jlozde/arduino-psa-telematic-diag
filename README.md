@@ -230,12 +230,13 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 | 80 | ZA Zone |
 | B0 | VIN |
 | 82 | Serial number |
-| A0 | ? |
-| B2 | ? |
-| B3 | Personalization menus |
-| B5 | ? |
-| B9 | ? |
-| C0 | ? |
+| A0 | ? (SMEG) |
+| B1 | ? (AIO) |
+| B2 | ? (SMEG, AIO) |
+| B3 | Personalization menus (SMEG) |
+| B5 | ? (SMEG) |
+| B9 | ? (SMEG) |
+| C0 | ? (SMEG) |
 
 ## Diagnostic frames explanation / What the Sketch is doing
 
