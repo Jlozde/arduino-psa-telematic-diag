@@ -9,6 +9,7 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 
 | Command | Description |
 |--|--|
+| 3E00 | Keep-Alive session |
 | 190209 | List of current faults |
 | 14FFFFFF | Clear faults |
 | 37 | Flash autocontrol (Unit must be unlocked first) |
@@ -20,7 +21,6 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 | 2703 | Unlocking service for configuration (Diagnostic session must be enabled first) - SEED |
 | 2702XXXXXXXX  | Unlocking response for download - XXXXXXXX = KEY - Must be given within 5 seconds after seed generation |
 | 2704XXXXXXXX  | Unlocking response for configuration - XXXXXXXX = KEY - Must be given within 5 seconds after seed generation |
-| 2784XXXXXXXX  | Unlocking response for configuration - XXXXXXXX = KEY - Must be given within 5 seconds after seed generation (AIO, SMEG) |
 | 22XXXX | Read Zone XXXX (2 bytes) |
 | 2EXXXXYYYYYYYYYYYY | Write Zone XXXX with data YYYYYYYYYYYY (Unit must be unlocked first) |
 | 3101FF0081F05A | Empty flash memory (Unit must be unlocked first) |
@@ -34,10 +34,20 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 
 | Command | Description |
 |--|--|
+| 3E | Keep-Alive session |
+| 17FF00 | List of current faults |
+| 14FF00 | Clear faults |
 | 1081 | End of communication |
 | 10C0 | Open Diagnostic session |
+| 2781 | Unlocking service for download (Diagnostic session must be enabled first) - SEED |
 | 2783 | Unlocking service for configuration (Diagnostic session must be enabled first) - SEED |
+| 2782XXXXXXXX  | Unlocking response for download - XXXXXXXX = KEY - Must be given within 5 seconds after seed generation |
+| 2784XXXXXXXX  | Unlocking response for configuration - XXXXXXXX = KEY - Must be given within 5 seconds after seed generation |
 | 21XX | Read Zone XX (1 byte) |
+| 3BXXYYYYYYYYYYYY | Write Zone XX with data YYYYYYYYYYYY (Unit must be unlocked first) |
+| 318181F05A | Empty flash memory (Unit must be unlocked first) |
+| 318101 | Empty flash memory (Unit must be unlocked first) |
+| 348100000D07 | Prepare flash writing (Unit must be unlocked first) |
 
 ## Test Commands (NAC/RCC_CN/RCC)
 | Command | Description |
@@ -66,6 +76,7 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 
 | Answer | Description |
 |--|--|
+| 7E00 | Keep-Alive reply |
 | 54 | Faults cleared |
 | 7101FF0001 | Flash erased successfully |
 | 7103FF0002 | Flash erased successfully |
@@ -102,11 +113,14 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 
 | Answer | Description |
 |--|--|
+| 7E | Keep-Alive reply |
 | 5081 | Communication closed |
 | 50C0 | Diagnostic session opened |
-| 6783XXXXXXXX | Seed generated for configuration - XXXXXXXX = SEED |
-| 6784 | Unlocked successfully for configuration - Unit will be locked again if no command is issued within 5 seconds |
 | 61XXYYYYYYYYYYYY  | Successfull read of Zone XX - YYYYYYYYYYYY = DATA |
+| 6781XXXXXXXX | Seed generated for download - XXXXXXXX = SEED |
+| 6783XXXXXXXX | Seed generated for configuration - XXXXXXXX = SEED |
+| 6782 | Unlocked successfully for download - Unit will be locked again if no command is issued within 5 seconds |
+| 6784 | Unlocked successfully for configuration - Unit will be locked again if no command is issued within 5 seconds |
 
 ## Zones (NAC/RCC_CN/RCC)
 
@@ -212,6 +226,14 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 |--|--|
 | FE | ZI Zone (Last 6 characters: current calibration) |
 | 80 | ZA Zone |
+| B0 | VIN |
+| 82 | Serial number |
+| A0 | ? |
+| B2 | ? |
+| B3 | Personalization menus |
+| B5 | ? |
+| B9 | ? |
+| C0 | ? |
 
 ## Diagnostic frames explanation / What the Sketch is doing
 
