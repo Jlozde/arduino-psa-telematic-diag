@@ -5,7 +5,7 @@ Arduino sketch to send diagnostic frames to telematic units
 ## How to use
 The serial console is used to send raw diagnostic frames, start it using 115200 baud rate
 
-## Commands
+## Commands (NAC/RCC_CN/RCC)
 
 | Command | Description |
 |--|--|
@@ -20,6 +20,7 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 | 2703 | Unlocking service for configuration (Diagnostic session must be enabled first) - SEED |
 | 2702XXXXXXXX  | Unlocking response for download - XXXXXXXX = KEY - Must be given within 5 seconds after seed generation |
 | 2704XXXXXXXX  | Unlocking response for configuration - XXXXXXXX = KEY - Must be given within 5 seconds after seed generation |
+| 2784XXXXXXXX  | Unlocking response for configuration - XXXXXXXX = KEY - Must be given within 5 seconds after seed generation (AIO, SMEG) |
 | 22XXXX | Read Zone XXXX (2 bytes) |
 | 2EXXXXYYYYYYYYYYYY | Write Zone XXXX with data YYYYYYYYYYYY (Unit must be unlocked first) |
 | 3101FF0081F05A | Empty flash memory (Unit must be unlocked first) |
@@ -29,7 +30,16 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 | 3103FF04 | Empty ZI Zone (Unit must be unlocked first) |
 | 3483110000 | Prepare ZI zone writing (Unit must be unlocked first) |
 
-## Test Commands
+## Commands (SMEG/AIO)
+
+| Command | Description |
+|--|--|
+| 1081 | End of communication |
+| 10C0 | Open Diagnostic session |
+| 2783 | Unlocking service for configuration (Diagnostic session must be enabled first) - SEED |
+| 21XXXX | Read Zone XXXX (2 bytes) |
+
+## Test Commands (NAC/RCC_CN/RCC)
 | Command | Description |
 |--|--|
 | 22D4XX | Measures |
@@ -52,7 +62,7 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 | 082FD620030308 | NAC/RCC: Sound test Back Left |
 | 082FD62003030A | NAC/RCC: Sound test Back Left |
 
-## Answers
+## Answers (NAC/RCC_CN/RCC)
 
 | Answer | Description |
 |--|--|
@@ -88,14 +98,23 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 | 7F22XX | Failed Configuration Read |
 | 7FXXYY | Error - XX = Service / YY = Error Number |
 
-## Zones
+## Answers (SMEG/AIO)
+
+| Answer | Description |
+|--|--|
+| 5081 | Communication closed |
+| 50C0 | Diagnostic session opened |
+| 6783XXXXXXXX | Seed generated for configuration - XXXXXXXX = SEED |
+| 6784 | Unlocked successfully for configuration - Unit will be locked again if no command is issued within 5 seconds |
+
+## Zones (NAC/RCC_CN/RCC)
 
 | Zone ID | Description |
 |--|--|
 | F0FE | ZI Zone (Last 6 characters: current calibration) |
 | F080 | ZA Zone |
 | F190 | VIN |
-| F18C | NAC/RCC Serial number |
+| F18C | Serial number |
 | 2100 | NAC/RCC: Telecoding_Fct_AAS |
 | 2101 | NAC/RCC: Telecoding_Fct_AFIL |
 | 1234 | NAC/RCC: HU_CODING_ADDONS |
