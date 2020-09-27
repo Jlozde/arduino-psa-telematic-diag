@@ -116,6 +116,8 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 | 7E | Keep-Alive reply |
 | 5081 | Communication closed |
 | 50C0 | Diagnostic session opened |
+| 31A800 | Reboot |
+| 31A801 | Reboot 2 |
 | 61XXYYYYYYYYYYYY  | Successfull read of Zone XX - YYYYYYYYYYYY = DATA |
 | 6781XXXXXXXX | Seed generated for download - XXXXXXXX = SEED |
 | 6783XXXXXXXX | Seed generated for configuration - XXXXXXXX = SEED |
