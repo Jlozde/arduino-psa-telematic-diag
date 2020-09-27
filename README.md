@@ -30,7 +30,7 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 | 3103FF04 | Empty ZI Zone (Unit must be unlocked first) |
 | 3483110000 | Prepare ZI zone writing (Unit must be unlocked first) |
 
-## Commands (SMEG/AIO)
+## Commands (SMEG/AIO/MRN)
 
 | Command | Description |
 |--|--|
@@ -74,6 +74,30 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 | 082FD620030308 | Sound test Back Left |
 | 082FD62003030A | Sound test Back Left |
 
+
+## Test Commands (SMEG/AIO/MRN)
+| Command | Description |
+|--|--|
+| 308300 | Black screen |
+| 308301 | Black screen Keep-Alive |
+| 308302 | Stop Black screen |
+| 308311 | Abort Black screen |
+| 308200 | Blank screen |
+| 308301 | Blank screen Keep-Alive |
+| 308202 | Stop Blank screen |
+| 308211 | Abort Blank screen |
+| 308700 | Camera display |
+| 308701 | Camera display Keep-Alive |
+| 308702 | Stop Camera display |
+| 308711 | Abort Camera display |
+| 30850001006419 | Sound testing Front Right |
+| 30850002006419 | Sound testing Front Left |
+| 30850003006419 | Sound testing Rear Right |
+| 30850004006419 | Sound testing Rear Left |
+| 308501 | Sound testing Keep-Alive |
+| 308502 | Stop Sound testing |
+| 308511 | Abort Sound testing |
+
 ## Answers (NAC/RCC_CN/RCC)
 
 | Answer | Description |
@@ -111,7 +135,7 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 | 7F22XX | Failed Configuration Read |
 | 7FXXYY | Error - XX = Service / YY = Error Number |
 
-## Answers (SMEG/AIO)
+## Answers (SMEG/AIO/MRN)
 
 | Answer | Description |
 |--|--|
@@ -224,7 +248,7 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 | 00DD | Calibration_Fct_AEE_SEL |
 | 2145 | Telecoding_Fct_AIO |
 
-## Zones (SMEG/AIO)
+## Zones (SMEG/AIO/MRN)
 
 | Zone ID | Description |
 |--|--|
@@ -239,6 +263,8 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 | B5 | ? (SMEG) |
 | B9 | ? (SMEG) |
 | C0 | ? (SMEG) |
+| D0 | Display details - Part number, Software (SMEG) |
+| BC | GPS Measures (SMEG) |
 
 ## Diagnostic frames explanation / What the Sketch is doing
 
