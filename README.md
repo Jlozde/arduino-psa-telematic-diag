@@ -37,7 +37,7 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 | 1081 | End of communication |
 | 10C0 | Open Diagnostic session |
 | 2783 | Unlocking service for configuration (Diagnostic session must be enabled first) - SEED |
-| 21XXXX | Read Zone XXXX (2 bytes) |
+| 21XX | Read Zone XXXX (1 byte) |
 
 ## Test Commands (NAC/RCC_CN/RCC)
 | Command | Description |
@@ -106,6 +106,7 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 | 50C0 | Diagnostic session opened |
 | 6783XXXXXXXX | Seed generated for configuration - XXXXXXXX = SEED |
 | 6784 | Unlocked successfully for configuration - Unit will be locked again if no command is issued within 5 seconds |
+| 61XXYYYYYYYYYYYY  | Successfull read of Zone XX - YYYYYYYYYYYY = DATA |
 
 ## Zones (NAC/RCC_CN/RCC)
 
