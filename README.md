@@ -39,6 +39,8 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 | 14FF00 | Clear faults |
 | 1081 | End of communication |
 | 10C0 | Open Diagnostic session |
+| 31A800 | Reboot |
+| 31A801 | Reboot 2 |
 | 2781 | Unlocking service for download (Diagnostic session must be enabled first) - SEED |
 | 2783 | Unlocking service for configuration (Diagnostic session must be enabled first) - SEED |
 | 2782XXXXXXXX  | Unlocking response for download - XXXXXXXX = KEY - Must be given within 5 seconds after seed generation |
@@ -116,8 +118,8 @@ The serial console is used to send raw diagnostic frames, start it using 115200 
 | 7E | Keep-Alive reply |
 | 5081 | Communication closed |
 | 50C0 | Diagnostic session opened |
-| 31A800 | Reboot |
-| 31A801 | Reboot 2 |
+| 71A801 | Reboot |
+| 71A802 | Reboot 2 |
 | 61XXYYYYYYYYYYYY  | Successfull read of Zone XX - YYYYYYYYYYYY = DATA |
 | 6781XXXXXXXX | Seed generated for download - XXXXXXXX = SEED |
 | 6783XXXXXXXX | Seed generated for configuration - XXXXXXXX = SEED |
